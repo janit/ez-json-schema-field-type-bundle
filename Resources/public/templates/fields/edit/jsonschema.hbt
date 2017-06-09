@@ -10,7 +10,7 @@
     <div class="pure-u ez-editfield-input-area ez-default-error-style">
         <div class="ez-editfield-input">
             <div class="ez-textblock-input-ui">
-                <div id="jsoneditor-container"></div>
+                <div class="jsoneditor-container"></div>
                     <textarea
                         xstyle="display:none;"
                         class="ez-validated-input jsoneditor-data"

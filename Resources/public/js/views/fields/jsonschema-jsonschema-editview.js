@@ -22,13 +22,17 @@ YUI.add('jsonschema-jsonschema-editview', function (Y) {
             var textarea = this._getTextareaNode(),
                 textareaValue = textarea.get('value').trim(),
                 starting_value = '{}',
+                jsonEditorContainer,
                 jsonEditor;
 
             if (textareaValue !== '') {
                 starting_value = JSON.parse(textareaValue);
             }
 
-            jsonEditor = new JSONEditor(document.getElementById("jsoneditor-container"),{
+            jsonEditorContainer = this._getEditorContainerNode()._node;
+
+
+            jsonEditor = new JSONEditor(jsonEditorContainer,{
                 "ajax": true,
                 "startval": starting_value,
                 "schema": {
@@ -72,6 +76,10 @@ YUI.add('jsonschema-jsonschema-editview', function (Y) {
 
         _getTextareaNode: function () {
             return this.get('container').one('.ez-textblock-input-ui textarea.jsoneditor-data');
+        },
+
+        _getEditorContainerNode: function () {
+            return this.get('container').one('.ez-textblock-input-ui .jsoneditor-container');
         },
 
     });
