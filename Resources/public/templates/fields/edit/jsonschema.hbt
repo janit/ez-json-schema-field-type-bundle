@@ -2,24 +2,24 @@
     <div class="pure-u ez-editfield-infos">
         <label for="ez-field-{{ content.contentId }}-{{ fieldDefinition.identifier }}">
             <p class="ez-fielddefinition-name">
-                {{ translate_property fieldDefinition.names }}{{#if isRequired}}*{{/if}}:
+                {{ fieldDefinition.names.[eng-GB] }}{{#if isRequired}}*{{/if}}:
             </p>
             <p class="ez-editfield-error-message">&nbsp;</p>
         </label>
     </div>
     <div class="pure-u ez-editfield-input-area ez-default-error-style">
-
         <div class="ez-editfield-input">
-
-
-        <div id="editor_holder">zzz</div>
-
-        <div class="jsonschema-jsonschema-input-ui"><input type="text"
-                value="{{ field.fieldValue }}"
-                class="ez-validated-input"
-                id="ez-field-{{ content.contentId }}-{{ fieldDefinition.identifier }}"
-                {{#if isRequired}} required{{/if}}
-            ></div></div>
-        {{> ez_fielddescription_tooltip }}
+            <div class="ez-textblock-input-ui">
+                    <textarea
+                        xstyle="display:none;"
+                        class="ez-validated-input jsonlayout"
+                        id="ez-field-{{ content.contentId }}-{{ fieldDefinition.identifier }}"
+                        rows="{{ fieldDefinition.fieldSettings.textRows }}"
+                        {{#if isRequired}} required{{/if}}>{{ field.fieldValue }}</textarea>
+                <div id="jsoneditor-container"></div>
+                </div>
+            </div>
+        </div>
     </div>
+    {{> ez_fielddescription_tooltip }}
 </div>

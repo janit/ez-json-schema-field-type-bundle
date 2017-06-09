@@ -3,7 +3,8 @@ YUI.add('jsonschema-jsonschema-editview', function (Y) {
     Y.namespace('JsonSchema');
 
     var L = Y.Lang,
-        FIELDTYPE_IDENTIFIER = 'jsonschemajsonschema';
+        FIELDTYPE_IDENTIFIER = 'jsonschemajsonschema',
+        EVENT_LAYOUT_EDITOR_CHANGE = 'change';
 
     Y.JsonSchema.JSONSchemaEditView = Y.Base.create('jsonschemaEditView', Y.eZ.FieldEditView, [], {
         events: {
@@ -14,60 +15,28 @@ YUI.add('jsonschema-jsonschema-editview', function (Y) {
         },
 
         initializer: function () {
-
             this.after('activeChange', this._bootEditor, this);
-
-
         },
 
         _bootEditor: function(){
+            var textarea = this._getTextareaNode(),
+                textareaValue = textarea.get('value').trim(),
+                starting_value = '{}',
+//                schema = event.newVal,
+                jsonEditor;
 
-            var editor = new JSONEditor(document.getElementById("editor_holder"),{
+            jsonEditor = new JSONEditor(document.getElementById("jsoneditor-container"),{
                 "ajax": true,
                 "schema": {
                     "$ref": "/bundles/ezjsonschemafieldtype/schema/test.json"
                 }
-
             });
 
-            /*
-            // Initialize the editor
-            var editor = new JSONEditor(document.getElementById("editor_holder"),{
-                schema: {
-                    type: "object",
-
-                    "properties": {
-                        "pets": {
-                            "type": "array",
-                            "format": "table",
-                            "title": "Pets",
-                            "uniqueItems": true,
-                            "items": {
-                                "type": "object",
-                                "title": "Pet",
-                                "properties": {
-                                    "type": {
-                                        "type": "string",
-                                        "enum": [
-                                            "cat",
-                                            "dog",
-                                            "bird",
-                                            "reptile",
-                                            "other"
-                                        ],
-                                        "default": "dog"
-                                    },
-                                    "name": {
-                                        "type": "string"
-                                    }
-                                }}}}
-
-
-                }
+            // Listen for changes
+            jsonEditor.on(EVENT_LAYOUT_EDITOR_CHANGE, function () {
+                textarea.set('value', JSON.stringify(jsonEditor.getValue()));
             });
 
-
-            */
         },
 
         validate: function () {
@@ -95,7 +64,12 @@ YUI.add('jsonschema-jsonschema-editview', function (Y) {
 
         _getFieldValue: function () {
             return this.get('container').one('.jsonschema-jsonschema-input-ui input').get('value');
-        }
+        },
+
+        _getTextareaNode: function () {
+            return this.get('container').one('.ez-textblock-input-ui textarea.jsonlayout');
+        },
+
     });
 
     Y.eZ.FieldEditView.registerFieldEditView(
