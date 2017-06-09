@@ -1,0 +1,16 @@
+{
+    "name": "janit/ez-json-schema-field-type-bundle",
+    "description": "eZ Platform Bundle that provides a JSON Schema field type for storing flexible attributes",
+    "type": "ezplatform-bundle",
+    "require": {},
+    "autoload": {
+        "psr-4": { "Janit\\EzJsonSchemaFieldTypeBundle\\": "" }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jani Tarvainen",
+            "email": "janit@iki.fi"
+        }
+    ]
+}

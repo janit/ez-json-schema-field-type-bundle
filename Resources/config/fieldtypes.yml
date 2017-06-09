@@ -1,0 +1,19 @@
+parameters:
+    ezpublish.fieldType.jsonschemajsonschema.class: EzJsonSchemaFieldTypeBundle\FieldType\JSONSchema\Type
+    ezrepoforms.field_type.form_mapper.jsonschemajsonschema.class: EzJsonSchemaFieldTypeBundle\FieldType\JSONSchema\FormMapper
+
+services:
+    ezpublish.fieldType.jsonschemajsonschema:
+        class: "%ezpublish.fieldType.jsonschemajsonschema.class%"
+        parent: ezpublish.fieldType
+        tags:
+            - {name: ezpublish.fieldType, alias: jsonschemajsonschema}
+
+    ezrepoforms.field_type.form_mapper.jsonschemajsonschema:
+        class: "%ezrepoforms.field_type.form_mapper.jsonschemajsonschema.class%"
+        tags:
+            - { name: ez.fieldFormMapper.definition, fieldType: jsonschemajsonschema }
+            - { name: ez.fieldFormMapper.value, fieldType: jsonschemajsonschema }
+        arguments:
+            - "@ezpublish.api.service.field_type"
+

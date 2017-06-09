@@ -1,0 +1,8 @@
+{% extends 'EzPublishCoreBundle::content_fields.html.twig' %}
+
+{% block jsonschemajsonschema_field %}
+    {% spaceless %}
+        {% set field_value = field.value.text %}
+        {{ block( 'simple_inline_field' ) }}
+    {% endspaceless %}
+{% endblock %}

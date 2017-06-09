@@ -1,0 +1,8 @@
+parameters:
+    ezpublish.fieldType.indexable.jsonschemajsonschema.class: EzJsonSchemaFieldTypeBundle\FieldType\JSONSchema\SearchField
+
+services:
+    ezpublish.fieldType.indexable.jsonschemajsonschema:
+        class: "%ezpublish.fieldType.indexable.jsonschemajsonschema.class%"
+        tags:
+            - {name: ezpublish.fieldType.indexable, alias: jsonschemajsonschema}

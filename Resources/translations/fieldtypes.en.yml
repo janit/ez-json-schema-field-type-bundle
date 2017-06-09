@@ -1,0 +1,2 @@
+jsonschemajsonschema: { name: "JSON Schema" }
+field_definition.jsonschemajsonschema.default_value: "Default value"

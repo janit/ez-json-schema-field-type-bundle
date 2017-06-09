@@ -1,0 +1,9 @@
+parameters:
+    ezpublish.fieldType.jsonschemajsonschema.converter.class: EzJsonSchemaFieldTypeBundle\Persistence\Content\FieldValue\Converter\JSONSchemaConverter
+
+services:
+    ezpublish.fieldType.jsonschemajsonschema.converter:
+        class: "%ezpublish.fieldType.jsonschemajsonschema.converter.class%"
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: jsonschemajsonschema, lazy: true, callback: '::create'}
+

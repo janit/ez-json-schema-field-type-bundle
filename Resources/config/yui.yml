@@ -1,0 +1,26 @@
+system:
+    default:
+        yui:
+            modules:
+                ez-rawcontentview:
+                    requires:
+                        - 'jsonschema-jsonschema-view'
+                ez-contenteditformview:
+                    requires:
+                        - 'jsonschema-jsonschema-editview'
+                jsonschema-jsonschema-view:
+                    requires: ['ez-fieldview', 'jsonschemaview-ez-template']
+                    path: "%jsonschema_jsonschemafieldtype.public_dir%/js/views/fields/jsonschema-jsonschema-view.js"
+                jsonschema-jsonschema-editview:
+                    requires: ['ez-fieldeditview', 'event-valuechange', 'jsonschemaeditview-ez-template']
+                    path: "%jsonschema_jsonschemafieldtype.public_dir%/js/views/fields/jsonschema-jsonschema-editview.js"
+                jsonschemaview-ez-template:
+                    type: 'template'
+                    path: "%jsonschema_jsonschemafieldtype.public_dir%/templates/fields/view/jsonschema.hbt"
+                jsonschemaeditview-ez-template:
+                    type: 'template'
+                    path: "%jsonschema_jsonschemafieldtype.public_dir%/templates/fields/edit/jsonschema.hbt"
+
+
+
+

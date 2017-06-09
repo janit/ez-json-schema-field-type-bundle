@@ -1,0 +1,12 @@
+system:
+    default:
+        fielddefinition_settings_templates:
+            -
+                template: "EzJsonSchemaFieldTypeBundle::fielddefinition_settings.html.twig"
+        fielddefinition_edit_templates:
+            -
+                template: "EzJsonSchemaFieldTypeBundle::field_types.html.twig"
+        field_templates:
+            -
+                template: "EzJsonSchemaFieldTypeBundle::content_fields.html.twig"
+
