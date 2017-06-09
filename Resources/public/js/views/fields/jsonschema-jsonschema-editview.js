@@ -22,6 +22,15 @@ YUI.add('jsonschema-jsonschema-editview', function (Y) {
 
         _bootEditor: function(){
 
+            var editor = new JSONEditor(document.getElementById("editor_holder"),{
+                "ajax": true,
+                "schema": {
+                    "$ref": "/bundles/ezjsonschemafieldtype/schema/test.json"
+                }
+
+            });
+
+            /*
             // Initialize the editor
             var editor = new JSONEditor(document.getElementById("editor_holder"),{
                 schema: {
@@ -56,6 +65,9 @@ YUI.add('jsonschema-jsonschema-editview', function (Y) {
 
                 }
             });
+
+
+            */
         },
 
         validate: function () {
