@@ -13,6 +13,51 @@ YUI.add('jsonschema-jsonschema-editview', function (Y) {
             }
         },
 
+        initializer: function () {
+
+            this.after('activeChange', this._bootEditor, this);
+
+
+        },
+
+        _bootEditor: function(){
+
+            // Initialize the editor
+            var editor = new JSONEditor(document.getElementById("editor_holder"),{
+                schema: {
+                    type: "object",
+
+                    "properties": {
+                        "pets": {
+                            "type": "array",
+                            "format": "table",
+                            "title": "Pets",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "object",
+                                "title": "Pet",
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "cat",
+                                            "dog",
+                                            "bird",
+                                            "reptile",
+                                            "other"
+                                        ],
+                                        "default": "dog"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                }}}}
+
+
+                }
+            });
+        },
+
         validate: function () {
             var validity = this._getInputValidity(),
                 config = this._variables();

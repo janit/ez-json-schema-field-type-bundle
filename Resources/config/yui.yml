@@ -5,6 +5,7 @@ system:
                 ez-rawcontentview:
                     requires:
                         - 'jsonschema-jsonschema-view'
+                        - 'lib-jsoneditor'
                 ez-contenteditformview:
                     requires:
                         - 'jsonschema-jsonschema-editview'
@@ -20,7 +21,5 @@ system:
                 jsonschemaeditview-ez-template:
                     type: 'template'
                     path: "%jsonschema_jsonschemafieldtype.public_dir%/templates/fields/edit/jsonschema.hbt"
-
-
-
-
+                lib-jsoneditor:
+                    path: "%jsonschema_jsonschemafieldtype.public_dir%/js/lib/jsoneditor.js"
